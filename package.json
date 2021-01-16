@@ -1,6 +1,6 @@
 {
   "name": "wildfire-stocks",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "WildfireStocks",
   "author": "JHanhivaara",
@@ -17,7 +17,6 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "gatsby": "^2.26.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.13.1"
   }
 }
