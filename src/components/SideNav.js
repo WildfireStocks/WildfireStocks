@@ -15,33 +15,25 @@ const useStyles = makeStyles({
   list: {
     width: 250,
   },
-  fullList: {
-    width: 'auto',
-  },
 });
 
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
+    open: false
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState({ ...state, open: open });
   };
 
   const list = (anchor) => (
     <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
+      className={classes.list}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -68,19 +60,17 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+        <React.Fragment>
+          <Button onClick={toggleDrawer(true)}>Open</Button>
           <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
+            anchor="left"
+            open={state.open}
+            onClose={toggleDrawer(false)}
+            onOpen={toggleDrawer(true)}
           >
-            {list(anchor)}
+            {list("left")}
           </SwipeableDrawer>
         </React.Fragment>
-      ))}
     </div>
   );
 }
