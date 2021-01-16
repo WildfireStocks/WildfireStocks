@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Button from '@material-ui/core/Button';
+
+const [anchor, setAnchor] = useState(0);
 
 const SideNav = (props) => {
    return (
-      <div className="SideNav">
-         <a className="Home"></a>
-         <a className="About"></a>
-         <a className="Stock Search"></a>
-         <a className="Global"></a>
-         <a className="Domestic"></a>
-         <a className="Your Profile"></a>
-      </div>
+      <React.Fragment>
+         <Button onClick={toggleDrawer(anchor, true)}></Button>
+         <SwipeableDrawer
+            anchor={anchor}
+         >
+         </SwipeableDrawer>
+      </React.Fragment>
    )
 }
+
+const toggleDrawer = (anchor, open) => {
+   setAnchor({ open });
+}
+
 export default SideNav;
