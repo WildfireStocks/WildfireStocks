@@ -1,6 +1,5 @@
 import * as React from "react"
 import '../style/index.css'
-// import SideNav from '../components/SideNav.js'
 import Header from '../components/Header.js'
 
 
