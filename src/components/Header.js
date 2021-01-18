@@ -30,7 +30,7 @@ export default function ButtonAppBar() {
 
     return (
         <div className={classes.root} >
-            <AppBar>
+            <AppBar position="relative">
                 <Toolbar className={classes.gutters}>
                     <SideNav edge="start" className={classes.menuButton} color="inherit" aria-label="menu" >
                     </SideNav>
