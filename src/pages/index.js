@@ -1,6 +1,8 @@
 import * as React from "react"
+import { Router } from '@reach/router'
 import '../style/index.css'
 import SideNav from '../components/SideNav'
+import StockView from '../templates/StockView'
 
 
 // data
@@ -46,6 +48,9 @@ const links = [
 const IndexPage = () => {
   return (
     <main style={pageStyles}>
+      <Router basepath="/stocks">
+        <StockView path="/:stockSymbol"></StockView>
+      </Router>
       <title>Home Page</title>
         <SideNav></SideNav>
       
