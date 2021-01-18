@@ -3,7 +3,6 @@ import * as React from 'react';
 export default class StockView extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
 
         }
@@ -11,8 +10,7 @@ export default class StockView extends React.Component {
     render() {
         return(
             <React.Fragment>
-                <h1>{this.props.stockSymbol}</h1>
-
+                <h1>{this.props.match.params.stockSymbol}</h1>
             </React.Fragment>
         );
     }
