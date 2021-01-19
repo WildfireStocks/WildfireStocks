@@ -42,7 +42,7 @@ export default class StockView extends React.Component {
             parseFloat(res["data"]["Time Series (Daily)"][key]["4. close"])
           );
         });
-        
+
         data.labels.reverse();
         data.datasets[0].data.reverse();
         this.setState({ stockData: data });
@@ -57,8 +57,14 @@ export default class StockView extends React.Component {
         {this.state.stockData.labels ? (
           <Line
             data={this.state.stockData}
-            options={{ reverse: true }}
             height={100}
+            options={{
+              responsive: true,
+              tooltips: {
+                mode: 'index',
+                intersect: false,
+              }
+            }}
           />
         ) : (
           <h2>Unable to find stock</h2>
