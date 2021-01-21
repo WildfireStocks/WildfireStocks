@@ -4,7 +4,7 @@ const theme =  (themeType) => createMuiTheme({
     palette: {
         type: themeType,
         primary: {
-            main: '#ff00FF',
+            main: themeType == 'light' ? '#ffffff' : '#000000' ,
             light: '#6d6d6d',
             dark: '#1b1b1b',
             contrastText: '#ffffff'
