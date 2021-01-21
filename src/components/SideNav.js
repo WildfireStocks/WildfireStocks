@@ -7,9 +7,11 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import ChartIcon from '@material-ui/icons/ShowChart';
+import InfoIcon from '@material-ui/icons/Info';
+import AccountIcon from '@material-ui/icons/AccountBox';
 
 const useStyles = makeStyles({
   list: {
@@ -38,22 +40,27 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
+      <h1 style={{ paddingLeft:'10px' }}>Wildfire Stocks</h1>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+          <ListItem button key="home">
+            <ListItemIcon><HomeIcon/></ListItemIcon>
+            <ListItemText primary="Home" />
           </ListItem>
-        ))}
+          <ListItem button key="stocks">
+            <ListItemIcon><ChartIcon/></ListItemIcon>
+            <ListItemText primary="Stocks" />
+          </ListItem>
+          <ListItem button key="about">
+            <ListItemIcon><InfoIcon/></ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItem>
       </List>
-      <Divider />
+      <Divider/>
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button key="login">
+          <ListItemIcon><AccountIcon/></ListItemIcon>
+          <ListItemText primary="Login"/>  
+        </ListItem>
       </List>
     </div>
   );
