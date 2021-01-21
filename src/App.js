@@ -5,8 +5,6 @@ import { ThemeProvider } from '@material-ui/core'
 import { theme, darkTheme } from './components/theme.js'
 
 
-
-
 // markup
 export default class IndexPage extends React.Component {
   constructor(props) {
@@ -14,15 +12,19 @@ export default class IndexPage extends React.Component {
     this.state = {
       theme: darkTheme
     }
+    this.themeSwitcher = this.themeSwitcher.bind(this)
   }
-  componentDidMount(){
+  themeSwitcher(newTheme) {
+    this.setState({theme: newTheme.target.checked ? darkTheme : theme})
+    console.log('yeet' + newTheme.target.checked + ' ' + this.state.theme)
   }
+
   render() {
     return (
-      <ThemeProvider theme={this.state.theme ? darkTheme : theme}>
+      <ThemeProvider theme={this.state.theme}>
         <main>
           <title>Home Page</title>
-          <Header />
+          <Header switcher={this.themeSwitcher}/>
         </main>
       </ThemeProvider>
     )
