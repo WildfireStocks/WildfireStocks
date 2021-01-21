@@ -4,10 +4,10 @@ const theme =  (themeType) => createMuiTheme({
     palette: {
         type: themeType,
         primary: {
-            main: themeType == 'light' ? '#ffffff' : '#000000' ,
-            light: '#6d6d6d',
-            dark: '#1b1b1b',
-            contrastText: '#ffffff'
+            main: themeType === 'light' ? '#fafafa' : '#424242' ,
+            light: themeType === 'light' ? '#ffffff' : '#6d6d6d',
+            dark: themeType === 'light' ? '#c7c7c7' : '#1b1b1b',
+            contrastText: themeType === 'light' ? '#000000' : '#ffffff',
         },
         secondary: {
             main: '#e65100',

@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import SideNav from './SideNav.js';
 
@@ -39,14 +38,11 @@ export default function ButtonAppBar(props) {
                     <Typography variant="h6" className={classes.title}>
                         News
                     </Typography>
-                    <FormControlLabel
-                        control={
-                            <Switch
-                                onChange={props.switcher}
-                                color="primary"
-                            />
-                        }
-                    />
+                        <Switch
+                            onChange={props.switcher}
+                            color="secondary"
+                        >
+                        </Switch>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
