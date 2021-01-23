@@ -38,11 +38,10 @@ export default function ButtonAppBar(props) {
                     <Typography variant="h6" className={classes.title}>
                         News
                     </Typography>
-                        <Switch
+                        <Switch checked={props.defaultSwitch}
                             onChange={props.switcher}
                             color="secondary"
-                        >
-                        </Switch>
+                        />
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
