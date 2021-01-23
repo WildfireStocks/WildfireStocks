@@ -1,7 +1,6 @@
 import * as React from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
-import Header from "./components/Header";
 import secret from "./secret.json";
 
 export default class StockView extends React.Component {
@@ -52,7 +51,6 @@ export default class StockView extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
         <h1>{this.props.match.params.stockSymbol.toUpperCase()}</h1>
         {this.state.stockData.labels ? (
           <Line

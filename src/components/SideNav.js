@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
@@ -7,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import ChartIcon from '@material-ui/icons/ShowChart';
@@ -19,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SwipeableTemporaryDrawer() {
+function SwipeableTemporaryDrawer(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     open: false
@@ -33,7 +36,7 @@ export default function SwipeableTemporaryDrawer() {
     setState({ ...state, open: open });
   };
 
-  const list = (anchor) => (
+  const list = () => (
     <div
       className={classes.list}
       role="presentation"
@@ -44,15 +47,15 @@ export default function SwipeableTemporaryDrawer() {
       <List>
           <ListItem button key="home">
             <ListItemIcon><HomeIcon/></ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary="Home" onClick={() => props.history.push("/")}/>
           </ListItem>
-          <ListItem button key="stocks">
+          <ListItem button key="stocks" onClick={() => props.history.push("/stocks")}>
             <ListItemIcon><ChartIcon/></ListItemIcon>
             <ListItemText primary="Stocks" />
           </ListItem>
           <ListItem button key="about">
             <ListItemIcon><InfoIcon/></ListItemIcon>
-            <ListItemText primary="About" />
+            <ListItemText primary="About" onClick={() => props.history.push("/about")}/>
           </ListItem>
       </List>
       <Divider/>
@@ -80,4 +83,6 @@ export default function SwipeableTemporaryDrawer() {
         </React.Fragment>
     </div>
   );
-}
+} 
+
+export default withRouter(SwipeableTemporaryDrawer)
