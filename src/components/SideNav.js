@@ -36,7 +36,7 @@ function SwipeableTemporaryDrawer(props) {
     setState({ ...state, open: open });
   };
 
-  const list = (anchor) => (
+  const list = () => (
     <div
       className={classes.list}
       role="presentation"
