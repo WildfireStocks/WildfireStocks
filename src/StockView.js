@@ -52,7 +52,6 @@ export default class StockView extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
         <h1>{this.props.match.params.stockSymbol.toUpperCase()}</h1>
         {this.state.stockData.labels ? (
           <Line
