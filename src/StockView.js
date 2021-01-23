@@ -1,7 +1,6 @@
 import * as React from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
-import Header from "./components/Header";
 import secret from "./secret.json";
 
 export default class StockView extends React.Component {
