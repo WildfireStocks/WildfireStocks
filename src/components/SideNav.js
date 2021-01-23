@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SwipeableTemporaryDrawer() {
+function SwipeableTemporaryDrawer(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     open: false
@@ -48,7 +49,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemIcon><HomeIcon/></ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button key="stocks">
+          <ListItem button key="stocks" onClick={() => props.history.push("/stocks")}>
             <ListItemIcon><ChartIcon/></ListItemIcon>
             <ListItemText primary="Stocks" />
           </ListItem>
@@ -82,4 +83,6 @@ export default function SwipeableTemporaryDrawer() {
         </React.Fragment>
     </div>
   );
-}
+} 
+
+export default withRouter(SwipeableTemporaryDrawer)
