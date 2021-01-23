@@ -34,7 +34,7 @@ const themeSwitcher = (newTheme) => {
 function Content() {
   return (
       <ThemeProvider theme={theme(currentTheme)}>
-        <Header switcher={themeSwitcher} defaultSwitch={currentTheme == 'dark' ? true : false} />
+        <Header switcher={themeSwitcher} defaultSwitch={currentTheme === 'dark' ? true : false} />
         <Router path="/">
           <Route exact path="/" component={App} />
           <Switch path="/stocks">
