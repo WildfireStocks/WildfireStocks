@@ -47,7 +47,7 @@ function SwipeableTemporaryDrawer(props) {
       <List>
           <ListItem button key="home">
             <ListItemIcon><HomeIcon/></ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary="Home" onClick={() => props.history.push("/")}/>
           </ListItem>
           <ListItem button key="stocks" onClick={() => props.history.push("/stocks")}>
             <ListItemIcon><ChartIcon/></ListItemIcon>
@@ -55,7 +55,7 @@ function SwipeableTemporaryDrawer(props) {
           </ListItem>
           <ListItem button key="about">
             <ListItemIcon><InfoIcon/></ListItemIcon>
-            <ListItemText primary="About" />
+            <ListItemText primary="About" onClick={() => props.history.push("/about")}/>
           </ListItem>
       </List>
       <Divider/>
