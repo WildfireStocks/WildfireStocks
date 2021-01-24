@@ -10,6 +10,7 @@ import theme from "./components/theme";
 import Header from "./components/Header";
 import App from "./App";
 import StockView from "./StockView";
+import StockPage from './pages/StocksPage'
 //Styling
 import "./index.css";
 
@@ -40,6 +41,7 @@ function Content() {
         />
         <Route exact path="/" component={App} />
         <Switch path="/stocks">
+          <Route path="/stocks" component={StockPage}/>
           <Route path="/stocks/:stockSymbol" component={StockView} />
         </Switch>
       </Router>

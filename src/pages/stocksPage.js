@@ -10,6 +10,7 @@ export default class StockView extends React.Component {
   render() {
     return (
       <React.Fragment>
+          <h1>Ree</h1>
       </React.Fragment>
     );
   }
