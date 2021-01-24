@@ -1,6 +1,8 @@
 import * as React from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
+import CircularProgress from "@material-ui/core/CircularProgress"
+
 import secret from "./secret.json";
 
 export default class StockView extends React.Component {
@@ -18,6 +20,7 @@ export default class StockView extends React.Component {
           },
         ],
       },
+      requestDone: false
     };
   }
 
@@ -30,7 +33,10 @@ export default class StockView extends React.Component {
           secret.avApiKey
       )
       .then((res) => {
-        if (!res["data"]["Time Series (Daily)"]) return;
+        if (!res["data"]["Time Series (Daily)"]){
+          this.setState({requestDone: true});
+          return;
+        } 
         let data = this.state.stockData;
         data.labels = [];
         data.datasets.data = [];
@@ -44,7 +50,7 @@ export default class StockView extends React.Component {
 
         data.labels.reverse();
         data.datasets[0].data.reverse();
-        this.setState({ stockData: data });
+        this.setState({ stockData: data, requestDone: true });
       });
   }
 
@@ -65,7 +71,8 @@ export default class StockView extends React.Component {
             }}
           /> 
         )  : (
-          <h2>Unable to find stock</h2>
+          this.state.requestDone ? (
+            <h2>Unable to find stock</h2>) : (<CircularProgress />)
         )}
       </React.Fragment>
     );
