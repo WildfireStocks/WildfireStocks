@@ -52,7 +52,7 @@ export default class StockView extends React.Component {
     return (
       <React.Fragment>
         <h1>{this.props.match.params.stockSymbol.toUpperCase()}</h1>
-        {this.state.stockData.labels ? (
+        {this.state.stockData.labels.length > 0 ? (
           <Line
             data={this.state.stockData}
             height={100}
@@ -63,8 +63,8 @@ export default class StockView extends React.Component {
                 intersect: false,
               }
             }}
-          />
-        ) : (
+          /> 
+        )  : (
           <h2>Unable to find stock</h2>
         )}
       </React.Fragment>

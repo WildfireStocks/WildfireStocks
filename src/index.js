@@ -41,7 +41,7 @@ function Content() {
         />
         <Route exact path="/" component={App} />
         <Switch path="/stocks">
-          <Route path="/stocks" component={StockPage}/>
+          <Route exact={true} path="/stocks" component={StockPage}/>
           <Route path="/stocks/:stockSymbol" component={StockView} />
         </Switch>
       </Router>
