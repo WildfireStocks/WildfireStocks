@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
-import CircularProgress from "@material-ui/core/CircularProgress"
+import LinearProgress from "@material-ui/core/LinearProgress"
 
 import secret from "./secret.json";
 
@@ -72,7 +72,7 @@ export default class StockView extends React.Component {
           /> 
         )  : (
           this.state.requestDone ? (
-            <h2>Unable to find stock</h2>) : (<CircularProgress />)
+            <h2>Unable to find stock</h2>) : (<LinearProgress color="secondary" />)
         )}
       </React.Fragment>
     );
