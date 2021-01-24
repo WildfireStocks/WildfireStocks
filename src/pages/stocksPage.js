@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default class StockView extends React.Component {
+export default class StockPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
