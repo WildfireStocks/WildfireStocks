@@ -1,6 +1,8 @@
 import * as React from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
+import LinearProgress from "@material-ui/core/LinearProgress"
+
 import secret from "./secret.json";
 
 export default class StockView extends React.Component {
@@ -18,6 +20,7 @@ export default class StockView extends React.Component {
           },
         ],
       },
+      requestDone: false
     };
   }
 
@@ -30,7 +33,10 @@ export default class StockView extends React.Component {
           secret.avApiKey
       )
       .then((res) => {
-        if (!res["data"]["Time Series (Daily)"]) return;
+        if (!res["data"]["Time Series (Daily)"]){
+          this.setState({requestDone: true});
+          return;
+        } 
         let data = this.state.stockData;
         data.labels = [];
         data.datasets.data = [];
@@ -44,7 +50,7 @@ export default class StockView extends React.Component {
 
         data.labels.reverse();
         data.datasets[0].data.reverse();
-        this.setState({ stockData: data });
+        this.setState({ stockData: data, requestDone: true });
       });
   }
 
@@ -52,7 +58,7 @@ export default class StockView extends React.Component {
     return (
       <React.Fragment>
         <h1>{this.props.match.params.stockSymbol.toUpperCase()}</h1>
-        {this.state.stockData.labels ? (
+        {this.state.stockData.labels.length > 0 ? (
           <Line
             data={this.state.stockData}
             height={100}
@@ -63,9 +69,10 @@ export default class StockView extends React.Component {
                 intersect: false,
               }
             }}
-          />
-        ) : (
-          <h2>Unable to find stock</h2>
+          /> 
+        )  : (
+          this.state.requestDone ? (
+            <h2>Unable to find stock</h2>) : (<LinearProgress color="secondary" />)
         )}
       </React.Fragment>
     );
